@@ -1,0 +1,31 @@
+{
+  "parent": "minecraft:recipes/root",
+  "display": {
+    "icon": {
+      "item": "shield:jaegermeister_item"
+    },
+    "title": "JÄGERMEISTER!",
+    "description": "https://www.youtube.com/watch?v=jnhTxejPYFQ",
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "shield:jaegermeister_item"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 50
+  },
+  "sends_telemetry_event": true
+}
