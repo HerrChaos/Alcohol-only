@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "Food & Drinks",
+  "ingredients": [
+    {
+      "item": "minecraft:potion"
+    },
+    {
+      "item": "minecraft:fern"
+    }
+  ],
+  "result": {
+    "item": "shield:jaegermeister_item"
+  },
+  "show_notification": true
+}

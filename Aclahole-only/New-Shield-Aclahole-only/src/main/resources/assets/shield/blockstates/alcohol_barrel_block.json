@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "shield:block/alcohol_barrel",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "shield:block/alcohol_barrel"
+    },
+    "facing=south": {
+      "model": "shield:block/alcohol_barrel",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "shield:block/alcohol_barrel",
+      "y": 270
+    }
+  }
+}
