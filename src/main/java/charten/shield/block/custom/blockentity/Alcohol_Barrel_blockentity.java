@@ -26,12 +26,12 @@ public class Alcohol_Barrel_blockentity extends BlockEntity {
     }
 
     public static void tick(World world, BlockPos pos, BlockState state, Alcohol_Barrel_blockentity de) {
-        if (FillLevel > 17) FillLevel = 8;
+        if (FillLevel > 8) FillLevel = 8;
         if (FillLevel == 0) Fluid = "none";
     }
 
     public static void OnUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        if (FillLevel < 16) {
+        if (FillLevel < 8) {
             if (hasItemInHand(player, ModItems.BEER)) {
                 MakeFluidCheck("beer", player);
             }

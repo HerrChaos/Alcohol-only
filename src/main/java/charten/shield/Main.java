@@ -3,6 +3,7 @@ package charten.shield;
 import charten.shield.Item.ModItems;
 import charten.shield.block.ModBlocks;
 import charten.shield.block.custom.blockentity.ModBlockEntityTypes;
+import charten.shield.entity.ModEntities;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,6 +19,7 @@ public class Main implements ModInitializer {
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
 		ModBlockEntityTypes.registerModBlockEntities();
+		ModEntities.registerEntities();
 
 		LOGGER.info("Hello Fabric world!");
 	}
