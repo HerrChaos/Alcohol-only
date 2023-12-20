@@ -7,7 +7,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
-import static charten.shield.block.ModBlocks.*;
+import static charten.shield.block.ModBlocks.ALCOHOL_BARREL_BLOCK;
 
 public class ModBlockEntityTypes {
     public static final BlockEntityType<Alcohol_Barrel_blockentity> ALCOHOL_BARREL_ENTITY = Registry.register(

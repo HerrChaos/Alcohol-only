@@ -3,6 +3,7 @@ package charten.shield.block.custom.blockentity;
 import charten.shield.Item.ModItems;
 import charten.shield.block.ModBlocks;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.SnowyBlock;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -15,16 +16,26 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.dimension.DimensionType;
 
+import java.awt.*;
 import java.util.Objects;
 
 public class Alcohol_Barrel_blockentity extends BlockEntity {
+
+    //THIS CODE MAY BE GLOBAL
+
     private static int FillLevel = 0;
     private static String Fluid = "none";
     public Alcohol_Barrel_blockentity(BlockPos pos, BlockState state) {
         super(ModBlockEntityTypes.ALCOHOL_BARREL_ENTITY, pos, state);
     }
-
+    @Override
+    public void readNbt(NbtCompound nbt) {
+        Fluid = nbt.getString("fluid");
+        FillLevel = nbt.getInt("fill level");
+        super.readNbt(nbt);
+    }
     public static void tick(World world, BlockPos pos, BlockState state, Alcohol_Barrel_blockentity de) {
         if (FillLevel > 8) FillLevel = 8;
         if (FillLevel == 0) Fluid = "none";
@@ -70,12 +81,7 @@ public class Alcohol_Barrel_blockentity extends BlockEntity {
         super.writeNbt(nbt);
     }
 
-    @Override
-    public void readNbt(NbtCompound nbt) {
-        Fluid = nbt.getString("fluid");
-        FillLevel = nbt.getInt("fill level");
-        super.readNbt(nbt);
-    }
+
 
     private static boolean hasItemInHand(PlayerEntity player, Item item) {
         return player.getStackInHand(player.getActiveHand()).getItem() == item;

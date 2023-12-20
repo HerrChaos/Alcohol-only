@@ -5,6 +5,7 @@ import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
 
 public class ModEntityRenderer {
     public static void registerModEntityRenderer() {
-        EntityRendererRegistry.register(ModEntities.BOTTLE_PROJECTILE, FlyingItemEntityRenderer::new);
+        EntityRendererRegistry.register(ModEntities.VODKA_BOTTLE_PROJECTILE, FlyingItemEntityRenderer::new);
+        EntityRendererRegistry.register(ModEntities.MOLOTOV_BOTTLE_ENTITY, FlyingItemEntityRenderer::new);
     }
 }

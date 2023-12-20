@@ -18,7 +18,7 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import static charten.shield.Item.ModItems.*;
+import static charten.shield.Item.ModItems.FULL_BEER_GLASS;
 
 public class AlcoholBarrelBlock extends Block implements BlockEntityProvider {
 

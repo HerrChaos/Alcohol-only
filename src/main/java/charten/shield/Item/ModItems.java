@@ -1,6 +1,7 @@
 package charten.shield.Item;
 
 import charten.shield.Item.custom.AlcoholItem;
+import charten.shield.Item.custom.MolotovItem;
 import charten.shield.Main;
 import charten.shield.block.ModBlocks;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
@@ -30,6 +31,9 @@ public class ModItems {
     public static final Item JAEGERMEISTER = registerItem("jaegermeister_item",
             new AlcoholItem(ModBlocks.JAEGERMEISTER_BLOCK ,new FabricItemSettings().maxCount(1).food(ModFoodComponents.JAEGERMEISTER)));
 
+    public static final Item MOLOTOV = registerItem("molotov",
+            new MolotovItem(new FabricItemSettings().maxCount(1)));
+
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, new Identifier(Main.MOD_ID, name), item);
     }
@@ -50,7 +54,6 @@ public class ModItems {
     }
     public static void registerModItems() {
         Main.LOGGER.info("Registering Items for Mod " + Main.MOD_ID);
-
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(ModItems::addItemsToToolsTabItemGroup);
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(ModItems::addItemsToIngredientsTabItemGroup);
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FOOD_AND_DRINK).register(ModItems::addItemsToFoodTabItemGroup);

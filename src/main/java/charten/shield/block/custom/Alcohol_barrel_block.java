@@ -18,7 +18,7 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
-import static net.minecraft.util.math.Direction.*;
+import static net.minecraft.util.math.Direction.NORTH;
 
 
 public class Alcohol_barrel_block extends BlockWithEntity implements BlockEntityProvider {

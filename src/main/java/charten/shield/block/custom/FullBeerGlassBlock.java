@@ -15,8 +15,8 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
-import static charten.shield.block.ModBlocks.*;
-import static net.minecraft.sound.SoundEvents.*;
+import static charten.shield.block.ModBlocks.BEER_GLASS_BLOCK;
+import static net.minecraft.sound.SoundEvents.ENTITY_GENERIC_DRINK;
 
 public class FullBeerGlassBlock extends Block{
 
