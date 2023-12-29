@@ -46,6 +46,7 @@ public class ModItems {
 
     }
     private static void addItemsToFoodTabItemGroup(FabricItemGroupEntries entries) {
+        entries.add(MOLOTOV);
         entries.add(BEER);
         entries.add(FULL_BEER_GLASS);
         entries.add(VODKA);

@@ -4,6 +4,8 @@ import charten.shield.Item.ModItems;
 import charten.shield.block.ModBlocks;
 import charten.shield.entity.ModEntities;
 import charten.shield.entity.custom.BottleEntity;
+import charten.shield.entity.custom.Molotov_BottleEntity;
+import charten.shield.entity.custom.Vodka_bottle;
 import net.minecraft.block.Block;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -52,19 +54,18 @@ public class AlcoholItem extends BlockItem {
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ItemStack itemStack = user.getStackInHand(hand);
         if (user.isSneaking()) {
-            world.playSound(null, user.getX(), user.getY(), user.getZ(),
-                    SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5f, 0.4f / (world.getRandom().nextFloat() * 0.4f + 0.8f));
-
+            ItemStack itemStack1 = user.getStackInHand(hand); // creates a new ItemStack instance of the user's itemStack in-hand
+            world.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5F, 1F); // plays a globalSoundEvent
             if (!world.isClient) {
-                BottleEntity bottle_entity = new BottleEntity(user, world, ModEntities.VODKA_BOTTLE_PROJECTILE);
-                bottle_entity.setItem(itemStack);
-                bottle_entity.setVelocity(user, user.getPitch(), user.getYaw(), 0.0f, 1.5f, 1.0f);
-                world.spawnEntity(bottle_entity);
+                Vodka_bottle entity = new Vodka_bottle(user, world);
+                entity.setItem(itemStack1);
+                entity.setVelocity(user, user.getPitch(), user.getYaw(), 0.0F, 1.5F, 0F);
+                world.spawnEntity(entity); // spawns entity
             }
 
             user.incrementStat(Stats.USED.getOrCreateStat(this));
             if (!user.getAbilities().creativeMode) {
-                itemStack.decrement(1);
+                itemStack1.decrement(1); // decrements itemStack if user is not in creative mode
             }
             return TypedActionResult.success(itemStack, world.isClient());
         }

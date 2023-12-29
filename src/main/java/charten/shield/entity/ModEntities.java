@@ -21,8 +21,9 @@ public class ModEntities {
     public static final EntityType<Molotov_BottleEntity> MOLOTOV_BOTTLE_ENTITY = Registry.register(Registries.ENTITY_TYPE,
             new Identifier(Main.MOD_ID, "molotov_bottleentity"),
             FabricEntityTypeBuilder.<Molotov_BottleEntity>create(SpawnGroup.MISC, Molotov_BottleEntity::new)
-                    .dimensions(EntityDimensions.fixed(0.25f, 0.25f)).build());
-
+                    .dimensions(EntityDimensions.fixed(0.25f, 0.25f))
+                    .trackRangeBlocks(4).trackedUpdateRate(10)
+                    .build());
     public static void registerEntities() {
         System.out.println("Registering Entities for " + Main.MOD_ID);
     }

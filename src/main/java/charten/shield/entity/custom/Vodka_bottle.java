@@ -2,6 +2,7 @@ package charten.shield.entity.custom;
 
 import charten.shield.Item.ModItems;
 import charten.shield.block.ModBlocks;
+import charten.shield.entity.ModEntities;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -10,9 +11,6 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
 import net.minecraft.item.Item;
-import net.minecraft.network.listener.ClientPlayPacketListener;
-import net.minecraft.network.packet.Packet;
-import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket;
 import net.minecraft.particle.BlockStateParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
@@ -28,8 +26,8 @@ public class Vodka_bottle extends BottleEntity{
     public Vodka_bottle(EntityType<? extends ThrownItemEntity> entityType, World world) {
         super(entityType, world);
     }
-    public Vodka_bottle(LivingEntity livingEntity, World world, EntityType modEntities) {
-        super(livingEntity, world, modEntities);
+    public Vodka_bottle(LivingEntity livingEntity, World world) {
+        super(livingEntity, world, ModEntities.VODKA_BOTTLE_PROJECTILE);
     }
     @Override
     protected Item getDefaultItem() {
@@ -38,20 +36,21 @@ public class Vodka_bottle extends BottleEntity{
 
     @Override
     protected void onBlockHit(BlockHitResult blockHitResult) {
-        if (!this.getWorld().isClient()) {
-            this.getWorld().sendEntityStatus(this, (byte) 3);
-            World world = this.getWorld();
-            Vec3d blockHitPos = blockHitResult.getPos();
-            ((ServerWorld) world).spawnParticles(
-                    new BlockStateParticleEffect(ParticleTypes.BLOCK, ModBlocks.VODKA_BLOCK.getDefaultState()),
-                    blockHitPos.getX(),
-                    blockHitPos.getY(),
-                    blockHitPos.getZ(),
-                    10, 0, 0, 0, 0.5
-            );
-        }
         this.discard();
         super.onBlockHit(blockHitResult);
+        if (this.getWorld().isClient) {
+            return;
+        }
+        this.getWorld().sendEntityStatus(this, (byte) 3);
+        World world = this.getWorld();
+        Vec3d blockHitPos = blockHitResult.getPos();
+        ((ServerWorld) world).spawnParticles(
+                new BlockStateParticleEffect(ParticleTypes.BLOCK, ModBlocks.VODKA_BLOCK.getDefaultState()),
+                blockHitPos.getX(),
+                blockHitPos.getY(),
+                blockHitPos.getZ(),
+                10, 0, 0, 0, 0.5
+        );
     }
 
     @Override

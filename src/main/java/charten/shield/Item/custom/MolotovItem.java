@@ -1,7 +1,7 @@
 package charten.shield.Item.custom;
 
-import charten.shield.entity.ModEntities;
-import charten.shield.entity.custom.BottleEntity;
+import charten.shield.entity.custom.Molotov_BottleEntity;
+import net.minecraft.entity.mob.ShulkerEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -16,22 +16,22 @@ public class MolotovItem extends Item {
     public MolotovItem(Settings settings) {
         super(settings);
     }
-    @Override
+
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-        ItemStack itemStack = user.getStackInHand(hand);
-        world.playSound(null, user.getX(), user.getY(), user.getZ(),
-                SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5f, 0.4f / (world.getRandom().nextFloat() * 0.4f + 0.8f));
+        ItemStack itemStack = user.getStackInHand(hand); // creates a new ItemStack instance of the user's itemStack in-hand
+        world.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5F, 1F); // plays a globalSoundEvent
         if (!world.isClient) {
-            BottleEntity bottle_entity = new BottleEntity(user, world, ModEntities.MOLOTOV_BOTTLE_ENTITY);
-            bottle_entity.setItem(itemStack);
-            bottle_entity.setVelocity(user, user.getPitch(), user.getYaw(), 0.0f, 1.5f, 1.0f);
-            world.spawnEntity(bottle_entity);
+            Molotov_BottleEntity entity = new Molotov_BottleEntity(user, world);
+            entity.setItem(itemStack);
+            entity.setVelocity(user, user.getPitch(), user.getYaw(), 0.0F, 1.5F, 0F);
+            world.spawnEntity(entity); // spawns entity
         }
+
         user.incrementStat(Stats.USED.getOrCreateStat(this));
         if (!user.getAbilities().creativeMode) {
-            itemStack.decrement(1);
+            itemStack.decrement(1); // decrements itemStack if user is not in creative mode
         }
-        super.use(world, user, hand);
+
         return TypedActionResult.success(itemStack, world.isClient());
     }
 }
