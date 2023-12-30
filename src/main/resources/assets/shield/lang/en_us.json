@@ -10,5 +10,7 @@
   "block.shield.jaegermeister": "Jägermeister",
   "block.shield.beer_glass": "Beer Glass",
   "block.shield.full_beer_glass": "Full Beer Glass",
-  "block.shield.alcohol_barrel_block": "Alcohol Barrel"
+  "block.shield.alcohol_barrel_block": "Alcohol Barrel",
+
+  "effect.shield.drunkinnis": "Drunkinnis"
 }

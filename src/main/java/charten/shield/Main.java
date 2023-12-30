@@ -4,6 +4,7 @@ import charten.shield.Item.ModItems;
 import charten.shield.block.ModBlocks;
 import charten.shield.block.custom.blockentity.ModBlockEntityTypes;
 import charten.shield.entity.ModEntities;
+import charten.shield.statuseffect.ModStatusEffects;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,6 +21,7 @@ public class Main implements ModInitializer {
 		ModBlocks.registerModBlocks();
 		ModBlockEntityTypes.registerModBlockEntities();
 		ModEntities.registerEntities();
+		ModStatusEffects.registerStatusEffect(MOD_ID);
 
 		LOGGER.info("Hello Fabric world!");
 	}

@@ -3,22 +3,25 @@ package charten.shield.Item.custom;
 import charten.shield.Item.ModItems;
 import charten.shield.block.ModBlocks;
 import charten.shield.entity.ModEntities;
-import charten.shield.entity.custom.BottleEntity;
-import charten.shield.entity.custom.Molotov_BottleEntity;
-import charten.shield.entity.custom.Vodka_bottle;
+import charten.shield.entity.custom.Bottle_entity;
+import charten.shield.statuseffect.ModStatusEffects;
 import net.minecraft.block.Block;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.ItemStack;
+import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
+import net.minecraft.item.*;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
+import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
+
+import java.util.*;
 
 import static net.minecraft.item.Items.GLASS_BOTTLE;
 
@@ -50,22 +53,66 @@ public class AlcoholItem extends BlockItem {
         return SoundEvents.ENTITY_GENERIC_DRINK;
     }
 
+
+    public ActionResult useOnBlock(ItemUsageContext context) {
+        List<Item> items = new ArrayList<>(5);
+        items.add(ModItems.JAEGERMEISTER);
+        items.add(ModItems.VODKA);
+        items.add(ModItems.WINE);
+        items.add(ModItems.FULL_BEER_GLASS);
+        items.add(ModItems.BEER);
+        if (context.getPlayer().getStackInHand(Hand.OFF_HAND).getItem() == null) {
+            return ActionResult.PASS;
+        }
+        if (items.contains(context.getPlayer().getStackInHand(Hand.OFF_HAND).getItem())) {
+            super.use(context.getWorld(),context.getPlayer(),context.getHand());
+            return ActionResult.FAIL;
+        }
+        return ActionResult.PASS;
+    }
+
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ItemStack itemStack = user.getStackInHand(hand);
-        if (user.isSneaking()) {
-            ItemStack itemStack1 = user.getStackInHand(hand); // creates a new ItemStack instance of the user's itemStack in-hand
-            world.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5F, 1F); // plays a globalSoundEvent
-            if (!world.isClient) {
-                Vodka_bottle entity = new Vodka_bottle(user, world);
-                entity.setItem(itemStack1);
-                entity.setVelocity(user, user.getPitch(), user.getYaw(), 0.0F, 1.5F, 0F);
-                world.spawnEntity(entity); // spawns entity
-            }
+        user.incrementStat(Stats.USED.getOrCreateStat(this));
 
-            user.incrementStat(Stats.USED.getOrCreateStat(this));
-            if (!user.getAbilities().creativeMode) {
-                itemStack1.decrement(1); // decrements itemStack if user is not in creative mode
+        List<Item> items = new ArrayList<>(5);
+        items.add(ModItems.JAEGERMEISTER);
+        items.add(ModItems.VODKA);
+        items.add(ModItems.WINE);
+        items.add(ModItems.FULL_BEER_GLASS);
+        items.add(ModItems.BEER);
+
+        if (items.contains(user.getStackInHand(Hand.OFF_HAND).getItem())) {
+
+            world.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5F, 1F); // plays a globalSoundEvent
+
+            if (!world.isClient) {
+                ThrownItemEntity entity = null;
+                if (items.contains(ModItems.VODKA)) {
+                    entity = new Bottle_entity(ModEntities.VODKA_BOTTLE_PROJECTILE, user, world);
+                }
+
+                if (items.contains(ModItems.BEER)) {
+                    entity = new Bottle_entity(ModEntities.BEER_BOTTLE_PROJECTILE, user, world);
+                }
+
+                if (items.contains(ModItems.WINE)) {
+                    entity = new Bottle_entity(ModEntities.JAEGERMEISTER_BOTTLE_PROJECTILE, user, world);
+                }
+
+                if (items.contains(ModItems.JAEGERMEISTER)) {
+                    entity = new Bottle_entity(ModEntities.WINE_BOTTLE_PROJECTILE, user, world);
+                }
+
+                if (entity != null) {
+                    entity.setItem(itemStack);
+                    entity.setVelocity(user, user.getPitch(), user.getYaw(), 0.0F, 1.5F, 0F);
+                    world.spawnEntity(entity);
+                }
+                if (!user.getAbilities().creativeMode) {
+                    itemStack.decrement(1);
+                }
             }
             return TypedActionResult.success(itemStack, world.isClient());
         }
@@ -76,6 +123,15 @@ public class AlcoholItem extends BlockItem {
     @Override
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
         super.finishUsing(stack, world, user);
+        StatusEffectInstance apliedStatuseffect = user.getStatusEffect(ModStatusEffects.Drunkinnis);
+        if (apliedStatuseffect != null) {
+            if (apliedStatuseffect.getAmplifier() >= 5) {
+                user.addStatusEffect(new StatusEffectInstance(ModStatusEffects.Drunkinnis, 20 * 20, 5));
+            }
+            user.addStatusEffect(new StatusEffectInstance(ModStatusEffects.Drunkinnis, 20 * 20, apliedStatuseffect.getAmplifier() + 1));
+        } else {
+            user.addStatusEffect(new StatusEffectInstance(ModStatusEffects.Drunkinnis, 20 * 20, 0));
+        }
         if (user.isPlayer() && !((PlayerEntity) user).getAbilities().creativeMode) {
             if (stack.getItem() == ModItems.FULL_BEER_GLASS) {
                 ((PlayerEntity) user).giveItemStack(new ItemStack(ModBlocks.BEER_GLASS_BLOCK, 1));
