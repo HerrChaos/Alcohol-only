@@ -26,6 +26,7 @@ import net.minecraft.world.WorldEvents;
 import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
 
+import static net.minecraft.util.math.Direction.EAST;
 import static net.minecraft.util.math.Direction.NORTH;
 
 public class WineBlock extends Block{
@@ -34,23 +35,14 @@ public class WineBlock extends Block{
     public static final BooleanProperty WOODED = BooleanProperty.of("wooded");
 
     public static final IntProperty BOTTLES = IntProperty.of("bottles", 1,6);
-    private static final VoxelShape ONE_BOTTLE_SHAPE = Block.createCuboidShape(7.0, 0.0, 6.0, 10.0, 11.0, 9.0);
-    private static final VoxelShape TWO_BOTTLE_SHAPE = Block.createCuboidShape(7.0, 0.0, 6.0, 13.0, 11.0, 12.0);
-    private static final VoxelShape THREE_BOTTLE_SHAPE = Block.createCuboidShape(1.0, 0.0, 6.0, 13.0, 11.0, 12.0);
-    private static final VoxelShape FOUR_BOTTLE_SHAPE = Block.createCuboidShape(1.0, 0.0, 3.0, 13.0, 11.0, 12.0);
-    private static final VoxelShape FIVE_BOTTLE_SHAPE = Block.createCuboidShape(1.0, 0.0, 3.0, 14.0, 11.0, 12.0);
-    private static final VoxelShape SIX_BOTTLE_SHAPE = Block.createCuboidShape(1.0, 0.0, 3.0, 14.0, 11.0, 12.0);
+    private static final VoxelShape ONE_BOTTLE_SHAPE = Block.createCuboidShape(6.0, 0.0, 6.0, 10.0, 11.0, 10.0);
+    private static final VoxelShape TWO_BOTTLE_SHAPE = Block.createCuboidShape(3.0, 0.0, 3.0, 13.0, 11.0, 13.0);
+    private static final VoxelShape THREE_BOTTLE_SHAPE = Block.createCuboidShape(3.0, 0.0, 3.0, 13.0, 11.0, 13.0);
+    private static final VoxelShape FOUR_BOTTLE_SHAPE = Block.createCuboidShape(3.0, 0.0, 3.0, 13.0, 11.0, 13.0);
+    private static final VoxelShape FIVE_BOTTLE_SHAPE = Block.createCuboidShape(2.0, 0.0, 2.0, 14.0, 11.0, 14.0);
+    private static final VoxelShape SIX_BOTTLE_SHAPE = Block.createCuboidShape(1.0, 0.0, 1.0, 15.0, 11.0, 15.0);
 
-
-    private static final VoxelShape ONE_BOTTLE_SHAPE_EAST = Block.createCuboidShape(7.0, 0.0, 6.0, 10.0, 11.0, 9.0);
-    private static final VoxelShape TWO_BOTTLE_SHAPE_EAST = Block.createCuboidShape(4.0, 0.0, 7.0, 10.0, 11.0, 13.0);
-    private static final VoxelShape THREE_BOTTLE_SHAPE_EAST = Block.createCuboidShape(1.0, 0.0, 6.0, 13.0, 11.0, 12.0);
-    private static final VoxelShape FOUR_BOTTLE_SHAPE_EAST = Block.createCuboidShape(1.0, 0.0, 3.0, 13.0, 11.0, 12.0);
-    private static final VoxelShape FIVE_BOTTLE_SHAPE_EAST = Block.createCuboidShape(1.0, 0.0, 3.0, 14.0, 11.0, 12.0);
-    private static final VoxelShape SIX_BOTTLE_SHAPE_EAST = Block.createCuboidShape(1.0, 0.0, 3.0, 14.0, 11.0, 12.0);
-
-
-    private static final VoxelShape WOODED_BOTTLE_SHAPE = Block.createCuboidShape(3.0, 0.0, 1.0, 13.0, 9.0, 14.0);
+    private static final VoxelShape WOODED_BOTTLE_SHAPE = Block.createCuboidShape(1.0, 0.0, 1.0, 14.0, 9.0, 14.0);
     public WineBlock(Settings settings) {
         super(settings);
         this.setDefaultState(this.stateManager.getDefaultState().with(BOTTLES, 1).with(WOODED, false));
@@ -97,34 +89,9 @@ public class WineBlock extends Block{
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
 
 
-
-        if (state.get(FACING) == NORTH) {
-            if (state.get(WOODED)) {
+        if (state.get(WOODED)) {
             return WOODED_BOTTLE_SHAPE;
-            }
-            int Bottle = state.get(BOTTLES);
-            if (Bottle == 1) return ONE_BOTTLE_SHAPE;
-            if (Bottle == 2) return TWO_BOTTLE_SHAPE;
-            if (Bottle == 3) return THREE_BOTTLE_SHAPE;
-            if (Bottle == 4) return FOUR_BOTTLE_SHAPE;
-            if (Bottle == 5) return FIVE_BOTTLE_SHAPE;
-            if (Bottle == 6) return SIX_BOTTLE_SHAPE;
         }
-
-        if (state.get(FACING) == NORTH) {
-            if (state.get(WOODED)) {
-                return WOODED_BOTTLE_SHAPE;
-            }
-            int Bottle = state.get(BOTTLES);
-            if (Bottle == 1) return ONE_BOTTLE_SHAPE;
-            if (Bottle == 2) return TWO_BOTTLE_SHAPE;
-            if (Bottle == 3) return THREE_BOTTLE_SHAPE;
-            if (Bottle == 4) return FOUR_BOTTLE_SHAPE;
-            if (Bottle == 5) return FIVE_BOTTLE_SHAPE;
-            if (Bottle == 6) return SIX_BOTTLE_SHAPE;
-        }
-
-
         switch (state.get(BOTTLES)) {
             default -> {
                 return ONE_BOTTLE_SHAPE;

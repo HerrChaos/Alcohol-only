@@ -54,6 +54,7 @@ public class AlcoholItem extends BlockItem {
     }
 
 
+    @Override
     public ActionResult useOnBlock(ItemUsageContext context) {
         List<Item> items = new ArrayList<>(5);
         items.add(ModItems.JAEGERMEISTER);
@@ -61,13 +62,13 @@ public class AlcoholItem extends BlockItem {
         items.add(ModItems.WINE);
         items.add(ModItems.FULL_BEER_GLASS);
         items.add(ModItems.BEER);
-        if (context.getPlayer().getStackInHand(Hand.OFF_HAND).getItem() == null) {
-            return ActionResult.PASS;
+        if (context.getPlayer().getStackInHand(Hand.OFF_HAND).getItem() != null) {
+            if (items.contains(context.getPlayer().getStackInHand(Hand.OFF_HAND).getItem())) {
+                super.use(context.getWorld(), context.getPlayer(), context.getHand());
+                return ActionResult.FAIL;
+            }
         }
-        if (items.contains(context.getPlayer().getStackInHand(Hand.OFF_HAND).getItem())) {
-            super.use(context.getWorld(),context.getPlayer(),context.getHand());
-            return ActionResult.FAIL;
-        }
+        this.place(new ItemPlacementContext(context));
         return ActionResult.PASS;
     }
 
@@ -82,39 +83,40 @@ public class AlcoholItem extends BlockItem {
         items.add(ModItems.WINE);
         items.add(ModItems.FULL_BEER_GLASS);
         items.add(ModItems.BEER);
+        if (hand == Hand.OFF_HAND) {
+            if (items.contains(user.getStackInHand(hand).getItem())) {
 
-        if (items.contains(user.getStackInHand(Hand.OFF_HAND).getItem())) {
+                world.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5F, 1F); // plays a globalSoundEvent
 
-            world.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5F, 1F); // plays a globalSoundEvent
+                if (!world.isClient) {
+                    ThrownItemEntity entity = null;
+                    if (items.contains(ModItems.VODKA)) {
+                        entity = new Bottle_entity(ModEntities.VODKA_BOTTLE_PROJECTILE, user, world);
+                    }
 
-            if (!world.isClient) {
-                ThrownItemEntity entity = null;
-                if (items.contains(ModItems.VODKA)) {
-                    entity = new Bottle_entity(ModEntities.VODKA_BOTTLE_PROJECTILE, user, world);
+                    if (items.contains(ModItems.BEER)) {
+                        entity = new Bottle_entity(ModEntities.BEER_BOTTLE_PROJECTILE, user, world);
+                    }
+
+                    if (items.contains(ModItems.WINE)) {
+                        entity = new Bottle_entity(ModEntities.JAEGERMEISTER_BOTTLE_PROJECTILE, user, world);
+                    }
+
+                    if (items.contains(ModItems.JAEGERMEISTER)) {
+                        entity = new Bottle_entity(ModEntities.WINE_BOTTLE_PROJECTILE, user, world);
+                    }
+
+                    if (entity != null) {
+                        entity.setItem(itemStack);
+                        entity.setVelocity(user, user.getPitch(), user.getYaw(), 0.0F, 1.5F, 0F);
+                        world.spawnEntity(entity);
+                    }
+                    if (!user.getAbilities().creativeMode) {
+                        itemStack.decrement(1);
+                    }
                 }
-
-                if (items.contains(ModItems.BEER)) {
-                    entity = new Bottle_entity(ModEntities.BEER_BOTTLE_PROJECTILE, user, world);
-                }
-
-                if (items.contains(ModItems.WINE)) {
-                    entity = new Bottle_entity(ModEntities.JAEGERMEISTER_BOTTLE_PROJECTILE, user, world);
-                }
-
-                if (items.contains(ModItems.JAEGERMEISTER)) {
-                    entity = new Bottle_entity(ModEntities.WINE_BOTTLE_PROJECTILE, user, world);
-                }
-
-                if (entity != null) {
-                    entity.setItem(itemStack);
-                    entity.setVelocity(user, user.getPitch(), user.getYaw(), 0.0F, 1.5F, 0F);
-                    world.spawnEntity(entity);
-                }
-                if (!user.getAbilities().creativeMode) {
-                    itemStack.decrement(1);
-                }
+                return TypedActionResult.success(itemStack, world.isClient());
             }
-            return TypedActionResult.success(itemStack, world.isClient());
         }
         super.use(world, user, hand);
         return TypedActionResult.fail(itemStack);
