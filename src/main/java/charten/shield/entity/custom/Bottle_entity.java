@@ -29,7 +29,7 @@ public class Bottle_entity extends ThrownItemEntity{
         return this.getItem().getItem();
     }
 
-    public Bottle_entity(EntityType entityType, LivingEntity livingEntity, World world) {
+    public Bottle_entity(EntityType<Bottle_entity> entityType, LivingEntity livingEntity, World world) {
         super(entityType, livingEntity, world);
     }
 
