@@ -23,7 +23,14 @@ import org.jetbrains.annotations.Nullable;
 public class BeerBlock extends Block{
     public static final IntProperty BOTTLES = IntProperty.of("bottles", 1,6);
     public static final BooleanProperty WOODED = BooleanProperty.of("wooded");
-    private static final VoxelShape ONE_BOTTLE_SHAPE = Block.createCuboidShape(7.0, 0.0, 7.0, 10.0, 7.0, 10.0);
+
+    private static final VoxelShape WOODED_BOTTLE_SHAPE = Block.createCuboidShape(1.0, 0.0, 1.0, 14.0, 9.0, 14.0);
+    private static final VoxelShape ONE_BOTTLE_SHAPE = Block.createCuboidShape(6.0, 0.0, 6.0, 10.0, 11.0, 10.0);
+    private static final VoxelShape TWO_BOTTLE_SHAPE = Block.createCuboidShape(3.0, 0.0, 3.0, 13.0, 11.0, 13.0);
+    private static final VoxelShape THREE_BOTTLE_SHAPE = Block.createCuboidShape(3.0, 0.0, 3.0, 13.0, 11.0, 13.0);
+    private static final VoxelShape FOUR_BOTTLE_SHAPE = Block.createCuboidShape(3.0, 0.0, 3.0, 13.0, 11.0, 13.0);
+    private static final VoxelShape FIVE_BOTTLE_SHAPE = Block.createCuboidShape(2.0, 0.0, 2.0, 14.0, 11.0, 14.0);
+    private static final VoxelShape SIX_BOTTLE_SHAPE = Block.createCuboidShape(1.0, 0.0, 1.0, 15.0, 11.0, 15.0);
     public BeerBlock(Settings settings) {
         super(settings);
         this.setDefaultState(this.stateManager.getDefaultState().with(BOTTLES, 1).with(WOODED, false));
@@ -76,7 +83,29 @@ public class BeerBlock extends Block{
 
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return ONE_BOTTLE_SHAPE;
+        if (state.get(WOODED)) {
+            return WOODED_BOTTLE_SHAPE;
+        }
+        switch (state.get(BOTTLES)) {
+            default -> {
+                return ONE_BOTTLE_SHAPE;
+            }
+            case 2 -> {
+                return TWO_BOTTLE_SHAPE;
+            }
+            case 3 -> {
+                return THREE_BOTTLE_SHAPE;
+            }
+            case 4 -> {
+                return FOUR_BOTTLE_SHAPE;
+            }
+            case 5 -> {
+                return FIVE_BOTTLE_SHAPE;
+            }
+            case 6 -> {
+                return SIX_BOTTLE_SHAPE;
+            }
+        }
     }
 
 }

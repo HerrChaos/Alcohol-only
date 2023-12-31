@@ -26,9 +26,6 @@ import net.minecraft.world.WorldEvents;
 import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
 
-import static net.minecraft.util.math.Direction.EAST;
-import static net.minecraft.util.math.Direction.NORTH;
-
 public class WineBlock extends Block{
     public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
 

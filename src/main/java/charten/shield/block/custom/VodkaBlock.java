@@ -88,26 +88,12 @@ public class VodkaBlock extends Block{
                 default -> {
                     return ONE_BOTTLE_SHAPE;
                 }
-                case 2 -> {
-                    return TWO_BOTTLE_SHAPE;
-                }
-                case 3 -> {
-                    return THREE_BOTTLE_SHAPE;
-                }
-                case 4 -> {
-                    return FOUR_BOTTLE_SHAPE;
-                }
-                case 5 -> {
-                    return FIVE_BOTTLE_SHAPE;
-                }
-                case 6 -> {
+                case 2, 3, 4, 5, 6 -> {
                     return SIX_BOTTLE_SHAPE;
                 }
-            }
+        }
     }
 
-    //All the breaking logic (for here till)
-    //So the mine it once, and it is still there
     private void breakOneBottle(World world, BlockPos pos, BlockState state) {
         world.playSound(null, pos, SoundEvents.BLOCK_GLASS_BREAK, SoundCategory.BLOCKS, 0.7f, 0.9f + world.random.nextFloat() * 0.2f);
         int i = state.get(BOTTLES);
