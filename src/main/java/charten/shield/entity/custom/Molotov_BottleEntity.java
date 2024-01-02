@@ -1,7 +1,6 @@
 package charten.shield.entity.custom;
 
 import charten.shield.Item.ModItems;
-import charten.shield.block.ModBlocks;
 import charten.shield.entity.ModEntities;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
@@ -11,20 +10,14 @@ import net.minecraft.item.Item;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket;
-import net.minecraft.particle.BlockStateParticleEffect;
 import net.minecraft.particle.ItemStackParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.EntityHitResult;
-import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.World;
-
-import java.util.Random;
 
 public class Molotov_BottleEntity extends ThrownItemEntity{
     public Molotov_BottleEntity(EntityType<? extends ThrownItemEntity> entityType, World world) {

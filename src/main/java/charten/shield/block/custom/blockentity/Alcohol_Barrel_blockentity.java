@@ -3,7 +3,6 @@ package charten.shield.block.custom.blockentity;
 import charten.shield.Item.ModItems;
 import charten.shield.block.ModBlocks;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.SnowyBlock;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -16,9 +15,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraft.world.dimension.DimensionType;
 
-import java.awt.*;
 import java.util.Objects;
 
 public class Alcohol_Barrel_blockentity extends BlockEntity {

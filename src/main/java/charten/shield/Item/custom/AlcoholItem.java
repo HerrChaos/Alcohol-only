@@ -21,7 +21,8 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import static net.minecraft.item.Items.GLASS_BOTTLE;
 

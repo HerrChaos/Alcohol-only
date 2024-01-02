@@ -2,6 +2,7 @@ package charten.shield.block.custom;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.HorizontalFacingBlock;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -11,6 +12,7 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
@@ -21,6 +23,7 @@ import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
 
 public class BeerBlock extends Block{
+    public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
     public static final IntProperty BOTTLES = IntProperty.of("bottles", 1,6);
     public static final BooleanProperty WOODED = BooleanProperty.of("wooded");
 
@@ -37,6 +40,7 @@ public class BeerBlock extends Block{
     }
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+        builder.add(FACING);
         builder.add(BOTTLES);
         builder.add(WOODED);
     }
@@ -45,10 +49,10 @@ public class BeerBlock extends Block{
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         BlockState blockState = ctx.getWorld().getBlockState(ctx.getBlockPos());
         if (blockState.isOf(this)) {
-            return blockState.cycle(BOTTLES);
+            return blockState.cycle(BOTTLES).with(FACING, ctx.getHorizontalPlayerFacing());
         }
         if (blockState.isOf(this)) {
-            return blockState.cycle(WOODED);
+            return blockState.cycle(WOODED).with(FACING, ctx.getHorizontalPlayerFacing());
         }
         return super.getPlacementState(ctx);
     }

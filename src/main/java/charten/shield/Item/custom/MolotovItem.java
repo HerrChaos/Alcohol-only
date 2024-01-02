@@ -1,7 +1,6 @@
 package charten.shield.Item.custom;
 
 import charten.shield.entity.custom.Molotov_BottleEntity;
-import net.minecraft.entity.mob.ShulkerEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
