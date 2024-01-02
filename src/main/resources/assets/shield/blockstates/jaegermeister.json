@@ -1,7 +1,199 @@
 {
   "variants": {
-    "": {
-      "model": "shield:block/jaegermeister"
+    "bottles=1,wooded=false,facing=north": {
+      "model": "shield:block/jeagermeister/jeagermeister_1_bottle"
+    },
+    "bottles=1,wooded=true,facing=north": {
+      "model": "shield:block/jeagermeister/wooded/jeagermeister_1_bottle_wooded"
+    },
+    "bottles=2,wooded=false,facing=north": {
+      "model": "shield:block/jeagermeister/jeagermeister_2_bottles"
+    },
+    "bottles=2,wooded=true,facing=north": {
+      "model": "shield:block/jeagermeister/wooded/jeagermeister_2_bottles_wooded"
+    },
+    "bottles=3,wooded=false,facing=north": {
+      "model": "shield:block/jeagermeister/jeagermeister_3_bottles"
+    },
+    "bottles=3,wooded=true,facing=north": {
+      "model": "shield:block/jeagermeister/wooded/jeagermeister_3_bottles_wooded"
+    },
+    "bottles=4,wooded=false,facing=north": {
+      "model": "shield:block/jeagermeister/jeagermeister_4_bottles"
+    },
+    "bottles=4,wooded=true,facing=north": {
+      "model": "shield:block/jeagermeister/wooded/jeagermeister_4_bottles_wooded"
+    },
+    "bottles=5,wooded=false,facing=north": {
+      "model": "shield:block/jeagermeister/jeagermeister_5_bottles"
+    },
+    "bottles=5,wooded=true,facing=north": {
+      "model": "shield:block/jeagermeister/wooded/jeagermeister_5_bottles_wooded"
+    },
+    "bottles=6,wooded=false,facing=north": {
+      "model": "shield:block/jeagermeister/jeagermeister_6_bottles"
+    },
+    "bottles=6,wooded=true,facing=north": {
+      "model": "shield:block/jeagermeister/wooded/jeagermeister_6_bottles_wooded"
+    },
+
+
+
+
+
+    "bottles=1,wooded=false,facing=east": {
+      "model": "shield:block/jeagermeister/jeagermeister_1_bottle",
+      "y": 90
+    },
+    "bottles=1,wooded=true,facing=east": {
+      "model": "shield:block/jeagermeister/wooded/jeagermeister_1_bottle_wooded",
+      "y": 90
+    },
+    "bottles=2,wooded=false,facing=east": {
+      "model": "shield:block/jeagermeister/jeagermeister_2_bottles",
+      "y": 90
+    },
+    "bottles=2,wooded=true,facing=east": {
+      "model": "shield:block/jeagermeister/wooded/jeagermeister_2_bottles_wooded",
+      "y": 90
+    },
+    "bottles=3,wooded=false,facing=east": {
+      "model": "shield:block/jeagermeister/jeagermeister_3_bottles",
+      "y": 90
+    },
+    "bottles=3,wooded=true,facing=east": {
+      "model": "shield:block/jeagermeister/wooded/jeagermeister_3_bottles_wooded",
+      "y": 90
+    },
+    "bottles=4,wooded=false,facing=east": {
+      "model": "shield:block/jeagermeister/jeagermeister_4_bottles",
+      "y": 90
+    },
+    "bottles=4,wooded=true,facing=east": {
+      "model": "shield:block/jeagermeister/wooded/jeagermeister_4_bottles_wooded",
+      "y": 90
+    },
+    "bottles=5,wooded=false,facing=east": {
+      "model": "shield:block/jeagermeister/jeagermeister_5_bottles",
+      "y": 90
+    },
+    "bottles=5,wooded=true,facing=east": {
+      "model": "shield:block/jeagermeister/wooded/jeagermeister_5_bottles_wooded",
+      "y": 90
+    },
+    "bottles=6,wooded=false,facing=east": {
+      "model": "shield:block/jeagermeister/jeagermeister_6_bottles",
+      "y": 90
+    },
+    "bottles=6,wooded=true,facing=east": {
+      "model": "shield:block/jeagermeister/wooded/jeagermeister_6_bottles_wooded",
+      "y": 90
+    },
+
+
+
+
+
+    "bottles=1,wooded=false,facing=south": {
+      "model": "shield:block/jeagermeister/jeagermeister_1_bottle",
+      "y": 180
+    },
+    "bottles=1,wooded=true,facing=south": {
+      "model": "shield:block/jeagermeister/wooded/jeagermeister_1_bottle_wooded",
+      "y": 180
+    },
+    "bottles=2,wooded=false,facing=south": {
+      "model": "shield:block/jeagermeister/jeagermeister_2_bottles",
+      "y": 180
+    },
+    "bottles=2,wooded=true,facing=south": {
+      "model": "shield:block/jeagermeister/wooded/jeagermeister_2_bottles_wooded",
+      "y": 180
+    },
+    "bottles=3,wooded=false,facing=south": {
+      "model": "shield:block/jeagermeister/jeagermeister_3_bottles",
+      "y": 180
+    },
+    "bottles=3,wooded=true,facing=south": {
+      "model": "shield:block/jeagermeister/wooded/jeagermeister_3_bottles_wooded",
+      "y": 180
+    },
+    "bottles=4,wooded=false,facing=south": {
+      "model": "shield:block/jeagermeister/jeagermeister_4_bottles",
+      "y": 180
+    },
+    "bottles=4,wooded=true,facing=south": {
+      "model": "shield:block/jeagermeister/wooded/jeagermeister_4_bottles_wooded",
+      "y": 180
+    },
+    "bottles=5,wooded=false,facing=south": {
+      "model": "shield:block/jeagermeister/jeagermeister_5_bottles",
+      "y": 180
+    },
+    "bottles=5,wooded=true,facing=south": {
+      "model": "shield:block/jeagermeister/wooded/jeagermeister_5_bottles_wooded",
+      "y": 180
+    },
+    "bottles=6,wooded=false,facing=south": {
+      "model": "shield:block/jeagermeister/jeagermeister_6_bottles",
+      "y": 180
+    },
+    "bottles=6,wooded=true,facing=south": {
+      "model": "shield:block/jeagermeister/wooded/jeagermeister_6_bottles_wooded",
+      "y": 180
+    },
+
+
+
+
+
+    "bottles=1,wooded=false,facing=west": {
+      "model": "shield:block/jeagermeister/jeagermeister_1_bottle",
+      "y": 270
+    },
+    "bottles=1,wooded=true,facing=west": {
+      "model": "shield:block/jeagermeister/wooded/jeagermeister_1_bottle_wooded",
+      "y": 270
+    },
+    "bottles=2,wooded=false,facing=west": {
+      "model": "shield:block/jeagermeister/jeagermeister_2_bottles",
+      "y": 270
+    },
+    "bottles=2,wooded=true,facing=west": {
+      "model": "shield:block/jeagermeister/wooded/jeagermeister_2_bottles_wooded",
+      "y": 270
+    },
+    "bottles=3,wooded=false,facing=west": {
+      "model": "shield:block/jeagermeister/jeagermeister_3_bottles",
+      "y": 270
+    },
+    "bottles=3,wooded=true,facing=west": {
+      "model": "shield:block/jeagermeister/wooded/jeagermeister_3_bottles_wooded",
+      "y": 270
+    },
+    "bottles=4,wooded=false,facing=west": {
+      "model": "shield:block/jeagermeister/jeagermeister_4_bottles",
+      "y": 270
+    },
+    "bottles=4,wooded=true,facing=west": {
+      "model": "shield:block/jeagermeister/wooded/jeagermeister_4_bottles_wooded",
+      "y": 270
+    },
+    "bottles=5,wooded=false,facing=west": {
+      "model": "shield:block/jeagermeister/jeagermeister_5_bottles",
+      "y": 270
+    },
+    "bottles=5,wooded=true,facing=west": {
+      "model": "shield:block/jeagermeister/wooded/jeagermeister_5_bottles_wooded",
+      "y": 270
+    },
+    "bottles=6,wooded=false,facing=west": {
+      "model": "shield:block/jeagermeister/jeagermeister_6_bottles",
+      "y": 270
+    },
+    "bottles=6,wooded=true,facing=west": {
+      "model": "shield:block/jeagermeister/wooded/jeagermeister_6_bottles_wooded",
+      "y": 270
     }
   }
 }

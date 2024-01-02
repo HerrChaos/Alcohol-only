@@ -19,6 +19,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
@@ -31,17 +32,17 @@ public class VodkaBlock extends Block{
 
     public static final IntProperty BOTTLES = IntProperty.of("bottles", 1,6);
     public static final BooleanProperty WOODED = BooleanProperty.of("wooded");
-    private static final VoxelShape ONE_BOTTLE_SHAPE = Block.createCuboidShape(7.0, 0.0, 7.0, 10.0, 10.0, 10.0);
+    private static final VoxelShape ONE_BOTTLE_SHAPE = Block.createCuboidShape(6.0, 0.0, 6.0, 10.0, 10.0, 10.0);
     private static final VoxelShape TWO_BOTTLE_SHAPE = Block.createCuboidShape(1.0, 0.0, 7.0, 10.0, 10.0, 10.0);
     private static final VoxelShape THREE_BOTTLE_SHAPE = Block.createCuboidShape(1.0, 0.0, 5.0, 14.0, 10.0, 10.0);
     private static final VoxelShape FOUR_BOTTLE_SHAPE = Block.createCuboidShape(1.0, 0.0, 5.0, 14.0, 10.0, 14.0);
     private static final VoxelShape FIVE_BOTTLE_SHAPE = Block.createCuboidShape(1.0, 0.0, 1.0, 15.0, 10.0, 14.0);
     private static final VoxelShape SIX_BOTTLE_SHAPE = Block.createCuboidShape(1.0, 0.0, 1.0, 15.0, 10.0, 15.0);
-    private static final VoxelShape WOODED_BOTTLE_SHAPE = Block.createCuboidShape(3.0, 0.0, 1.0, 13.0, 9.0, 14.0);
+    private static final VoxelShape WOODED_BOTTLE_SHAPE = Block.createCuboidShape(1.0, 0.0, 1.0, 15.0, 9.0, 15.0);
 
     public VodkaBlock(Settings settings) {
         super(settings);
-        this.setDefaultState(this.stateManager.getDefaultState().with(BOTTLES, 1).with(WOODED, false));
+        this.setDefaultState(this.stateManager.getDefaultState().with(BOTTLES, 1).with(WOODED, false).with(FACING, Direction.NORTH));
     }
     //Custom Block States (from here)
     @Override
@@ -79,7 +80,7 @@ public class VodkaBlock extends Block{
         if (blockState.isOf(this)) {
             return blockState.cycle(WOODED).with(FACING, ctx.getHorizontalPlayerFacing());
         }
-        return super.getPlacementState(ctx);
+        return this.getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing());
     }
     //Till here
 
