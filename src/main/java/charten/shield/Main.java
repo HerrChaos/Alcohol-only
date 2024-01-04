@@ -11,8 +11,8 @@ import org.slf4j.LoggerFactory;
 
 public class Main implements ModInitializer {
 
-    public static final Logger LOGGER = LoggerFactory.getLogger("shield");
-    public static final String MOD_ID = "shield";
+	public static final String MOD_ID = "shield";
+    public static final Logger LOGGER = LoggerFactory.getLogger(Main.MOD_ID);
 
     @Override
 	public void onInitialize() {

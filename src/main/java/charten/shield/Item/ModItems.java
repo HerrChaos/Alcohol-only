@@ -40,13 +40,12 @@ public class ModItems {
 
 
     private static void addItemsToToolsTabItemGroup(FabricItemGroupEntries entries) {
-
+        entries.add(MOLOTOV);
     }
     private static void addItemsToIngredientsTabItemGroup(FabricItemGroupEntries entries) {
 
     }
     private static void addItemsToFoodTabItemGroup(FabricItemGroupEntries entries) {
-        entries.add(MOLOTOV);
         entries.add(BEER);
         entries.add(FULL_BEER_GLASS);
         entries.add(VODKA);

@@ -6,6 +6,8 @@ import charten.shield.entity.ModEntities;
 import charten.shield.entity.custom.Bottle_entity;
 import charten.shield.statuseffect.ModStatusEffects;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
@@ -19,6 +21,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 import java.util.ArrayList;
@@ -33,6 +36,7 @@ public class AlcoholItem extends BlockItem {
     public AlcoholItem(Block block, Settings settings) {
         super(block, settings);
     }
+
 
     @Override
     public int getMaxUseTime(ItemStack stack) {
@@ -142,5 +146,14 @@ public class AlcoholItem extends BlockItem {
             ((PlayerEntity) user).giveItemStack(new ItemStack(GLASS_BOTTLE, 1));
         }
         return stack;
+    }
+
+    @Override
+    public boolean canMine(BlockState state, World world, BlockPos pos, PlayerEntity player) {
+        if (state.getHardness(world, pos) >= Blocks.STONE.getHardness()) {
+            player.setStackInHand(player.getActiveHand(), GLASS_BOTTLE.getDefaultStack());
+        }
+        System.out.println("Block left click");
+        return super.canMine(state,world,pos,player);
     }
 }

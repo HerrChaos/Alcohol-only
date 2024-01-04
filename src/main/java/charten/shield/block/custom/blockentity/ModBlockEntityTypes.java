@@ -12,7 +12,7 @@ import static charten.shield.block.ModBlocks.ALCOHOL_BARREL_BLOCK;
 public class ModBlockEntityTypes {
     public static final BlockEntityType<Alcohol_Barrel_blockentity> ALCOHOL_BARREL_ENTITY = Registry.register(
             Registries.BLOCK_ENTITY_TYPE,
-            new Identifier("shield", "alcohol_block_entity"),
+            new Identifier(Main.MOD_ID, "alcohol_block_entity"),
             FabricBlockEntityTypeBuilder.create(Alcohol_Barrel_blockentity::new, ALCOHOL_BARREL_BLOCK).build()
     );
 
