@@ -11,6 +11,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.projectile.thrown.SnowballEntity;
 import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
 import net.minecraft.item.*;
 import net.minecraft.sound.SoundCategory;
@@ -69,7 +70,7 @@ public class AlcoholItem extends BlockItem {
         items.add(ModItems.BEER);
         if (context.getPlayer().getStackInHand(Hand.OFF_HAND).getItem() != null) {
             if (items.contains(context.getPlayer().getStackInHand(Hand.OFF_HAND).getItem())) {
-                super.use(context.getWorld(), context.getPlayer(), context.getHand());
+                use(context.getWorld(), context.getPlayer(), context.getHand());
                 return ActionResult.FAIL;
             }
         }
@@ -113,7 +114,7 @@ public class AlcoholItem extends BlockItem {
 
                     if (entity != null) {
                         entity.setItem(itemStack);
-                        entity.setVelocity(user, user.getPitch(), user.getYaw(), 0.0F, 1.5F, 0F);
+                        entity.setVelocity(user, user.getPitch(), user.getYaw(), 0.0F, 1.5F, 1.0F);
                         world.spawnEntity(entity);
                     }
                     if (!user.getAbilities().creativeMode) {
@@ -146,14 +147,5 @@ public class AlcoholItem extends BlockItem {
             ((PlayerEntity) user).giveItemStack(new ItemStack(GLASS_BOTTLE, 1));
         }
         return stack;
-    }
-
-    @Override
-    public boolean canMine(BlockState state, World world, BlockPos pos, PlayerEntity player) {
-        if (state.getHardness(world, pos) >= Blocks.STONE.getHardness()) {
-            player.setStackInHand(player.getActiveHand(), GLASS_BOTTLE.getDefaultStack());
-        }
-        System.out.println("Block left click");
-        return super.canMine(state,world,pos,player);
     }
 }

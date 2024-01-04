@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "Food & Drinks",
+  "ingredients": [
+    {
+      "tag": "shield:alcohol_bottle"
+    },
+    {
+      "item": "minecraft:paper"
+    }
+  ],
+  "result": {
+    "item": "shield:molotov"
+  },
+  "show_notification": true
+}

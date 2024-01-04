@@ -22,7 +22,7 @@ public class MolotovItem extends Item {
         if (!world.isClient) {
             Molotov_BottleEntity entity = new Molotov_BottleEntity(user, world);
             entity.setItem(itemStack);
-            entity.setVelocity(user, user.getPitch(), user.getYaw(), 0.0F, 1.5F, 0F);
+            entity.setVelocity(user, user.getPitch(), user.getYaw(), 0.0F, 1.5F, 1.0F);
             world.spawnEntity(entity); // spawns entity
         }
 

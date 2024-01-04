@@ -12,6 +12,7 @@ public class ModTags {
     }
 
     public static class Items {
+        TagKey<Item> ALCOHOL_BOTTLE = createTag("alcohol_bottle");
         private static TagKey<Item> createTag(String name) {
             return TagKey.of(RegistryKeys.ITEM, new Identifier(Main.MOD_ID, name));
         }

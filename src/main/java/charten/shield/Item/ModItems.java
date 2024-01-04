@@ -9,6 +9,8 @@ import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
+import net.minecraft.item.SwordItem;
+import net.minecraft.item.ToolMaterials;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
@@ -34,12 +36,18 @@ public class ModItems {
     public static final Item MOLOTOV = registerItem("molotov",
             new MolotovItem(new FabricItemSettings().maxCount(1)));
 
+    public static final Item BROKEN_BOTTLE = registerItem("broken_bottle",
+            new SwordItem(ToolMaterials.STONE, 3, -1f, new FabricItemSettings().maxCount(1).maxDamage(10)));
+
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, new Identifier(Main.MOD_ID, name), item);
     }
 
 
     private static void addItemsToToolsTabItemGroup(FabricItemGroupEntries entries) {
+    }
+    private static void addItemsToCombatTabItemGroup(FabricItemGroupEntries entries) {
+        entries.add(BROKEN_BOTTLE);
         entries.add(MOLOTOV);
     }
     private static void addItemsToIngredientsTabItemGroup(FabricItemGroupEntries entries) {
@@ -57,5 +65,6 @@ public class ModItems {
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(ModItems::addItemsToToolsTabItemGroup);
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(ModItems::addItemsToIngredientsTabItemGroup);
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FOOD_AND_DRINK).register(ModItems::addItemsToFoodTabItemGroup);
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(ModItems::addItemsToCombatTabItemGroup);
     }
 }

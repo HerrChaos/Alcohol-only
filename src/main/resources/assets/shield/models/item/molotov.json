@@ -1,9 +1,9 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "shield:block/Bottle",
+		"0": "shield:block/bottle",
 		"1": "shield:block/fluid",
-		"particle": "shield:block/Bottle"
+		"particle": "shield:block/bottle"
 	},
 	"elements": [
 		{

@@ -1,6 +1,7 @@
 package charten.shield;
 
 import charten.shield.Item.ModItems;
+import charten.shield.Item.custom.BrockenBottleTester;
 import charten.shield.block.ModBlocks;
 import charten.shield.block.custom.blockentity.ModBlockEntityTypes;
 import charten.shield.entity.ModEntities;
@@ -17,6 +18,7 @@ public class Main implements ModInitializer {
     @Override
 	public void onInitialize() {
 
+		BrockenBottleTester.InitializeEventListiner();
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
 		ModBlockEntityTypes.registerModBlockEntities();
