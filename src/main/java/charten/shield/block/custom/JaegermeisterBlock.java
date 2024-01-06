@@ -68,6 +68,7 @@ public class JaegermeisterBlock extends Block{
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if(player.getAbilities().allowModifyWorld && player.getStackInHand(hand).getItem() == Items.SPRUCE_PLANKS && !state.get(WOODED)) {
             world.setBlockState(pos, state.cycle(WOODED));
+
             if (!player.getAbilities().creativeMode) {
                 player.getStackInHand(hand).decrement(1);
             }

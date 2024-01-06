@@ -42,7 +42,7 @@ public class Molotov_BottleEntity extends ThrownItemEntity{
             World world = this.getWorld();
             Vec3d blockHitPos = blockHitResult.getPos();
             this.getWorld().sendEntityStatus(this, (byte) 3);
-            SetFireAllAround(world, blockHitResult.getBlockPos(), 5);
+            SetFireAllAround(world, blockHitResult.getBlockPos(), 2);
             ((ServerWorld) world).spawnParticles(
                     new ItemStackParticleEffect(ParticleTypes.ITEM, ModItems.MOLOTOV.getDefaultStack()),
                     blockHitPos.getX(),
@@ -61,7 +61,7 @@ public class Molotov_BottleEntity extends ThrownItemEntity{
             World world = this.getWorld();
             Vec3d blockHitPos = entityHitResult.getPos();
             this.getWorld().sendEntityStatus(this, (byte) 3);
-            SetFireAllAround(world, entityHitResult.getEntity().getBlockPos(), 5);
+            SetFireAllAround(world, entityHitResult.getEntity().getBlockPos(), 2);
             ((ServerWorld) world).spawnParticles(
                     new ItemStackParticleEffect(ParticleTypes.ITEM, ModItems.MOLOTOV.getDefaultStack()),
                     blockHitPos.getX(),
@@ -74,7 +74,7 @@ public class Molotov_BottleEntity extends ThrownItemEntity{
         super.onEntityHit(entityHitResult);
     }
     private void SetFireAllAround(World world, BlockPos startPos, int radius) {
-        for (int i = 0; i < 500; i++) {
+        for (int i = 0; i < 50; i++) {
             int offsetX = world.getRandom().nextInt(radius * 2 + 1) - radius;
             int offsetY = world.getRandom().nextInt(radius * 2 + 1) - radius;
             int offsetZ = world.getRandom().nextInt(radius * 2 + 1) - radius;

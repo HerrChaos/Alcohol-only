@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "shield:wine_item",
+    "shield:beer_item",
+    "shield:vodka_item",
+    "shield:jaegermeister_item"
+  ]
+
+}
