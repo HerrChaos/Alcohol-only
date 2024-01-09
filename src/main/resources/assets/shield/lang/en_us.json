@@ -14,5 +14,7 @@
   "block.shield.full_beer_glass": "Full Beer Glass",
   "block.shield.alcohol_barrel_block": "Alcohol Barrel",
 
-  "effect.shield.drunkinnis": "Drunkinnis"
+  "effect.shield.drunkinnis": "Drunkinnis",
+
+  "entity.minecraft.villager.the_drunk_guy": "The drunk guy"
 }

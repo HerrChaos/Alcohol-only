@@ -18,8 +18,10 @@ repositories {
 	// for more information about repositories.
 }
 
+
+
 loom {
-    splitEnvironmentSourceSets()
+	splitEnvironmentSourceSets()
 
 	mods {
 		"shield" {
@@ -27,7 +29,32 @@ loom {
 			sourceSet sourceSets.client
 		}
 	}
+	runs {
+		// This adds a new gradle task that runs the datagen API: "gradlew runDatagen"
+		datagen {
+			inherit server
+			name "Data Generation"
+			vmArg "-Dfabric-api.datagen"
+			vmArg "-Dfabric-api.datagen.output-dir=${file("src/main/generated")}"
+			vmArg "-Dfabric-api.datagen.modid=main"
 
+			runDir "build/datagen"
+		}
+	}
+}
+
+//
+// ... (The rest of the file)
+//
+
+sourceSets {
+	main {
+		resources {
+			srcDirs += [
+					'src/main/generated'
+			]
+		}
+	}
 }
 
 dependencies {
