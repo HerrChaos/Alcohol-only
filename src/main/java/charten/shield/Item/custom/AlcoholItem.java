@@ -6,12 +6,9 @@ import charten.shield.entity.ModEntities;
 import charten.shield.entity.custom.Bottle_entity;
 import charten.shield.statuseffect.ModStatusEffects;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.projectile.thrown.SnowballEntity;
 import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
 import net.minecraft.inventory.StackReference;
 import net.minecraft.item.*;
@@ -21,11 +18,11 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
 import net.minecraft.util.*;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static net.minecraft.item.Items.GLASS_BOTTLE;
 
@@ -46,11 +43,6 @@ public class AlcoholItem extends BlockItem {
     @Override
     public UseAction getUseAction(ItemStack stack) {
         return UseAction.DRINK;
-    }
-
-    @Override
-    public SoundEvent getDrinkSound() {
-        return SoundEvents.ENTITY_GENERIC_DRINK;
     }
 
     @Override
@@ -78,7 +70,7 @@ public class AlcoholItem extends BlockItem {
         items.add(ModItems.WINE);
         items.add(ModItems.FULL_BEER_GLASS);
         items.add(ModItems.BEER);
-        if (context.getPlayer().getStackInHand(Hand.OFF_HAND).getItem() != null) {
+        if (Objects.requireNonNull(context.getPlayer()).getStackInHand(Hand.OFF_HAND).getItem() != null) {
             if (items.contains(context.getPlayer().getStackInHand(Hand.OFF_HAND).getItem())) {
                 use(context.getWorld(), context.getPlayer(), context.getHand());
                 return ActionResult.FAIL;

@@ -1,17 +1,12 @@
 package charten.shield.util;
 
 import charten.shield.Main;
-import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 
 public class ModTags {
-    public static class Blocks {
-
-    }
-
     public static class Items {
         public static final TagKey<Item> TEST = createTag("test");
         TagKey<Item> ALCOHOL_BOTTLE = createTag("alcohol_bottle");

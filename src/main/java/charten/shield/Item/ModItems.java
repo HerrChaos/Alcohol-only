@@ -51,7 +51,7 @@ public class ModItems {
         entries.add(MOLOTOV);
     }
     private static void addItemsToIngredientsTabItemGroup(FabricItemGroupEntries entries) {
-
+        entries.add(ModBlocks.BEER_GLASS_BLOCK);
     }
     private static void addItemsToFoodTabItemGroup(FabricItemGroupEntries entries) {
         entries.add(BEER);
