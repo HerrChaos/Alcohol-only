@@ -13,15 +13,14 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.thrown.SnowballEntity;
 import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
+import net.minecraft.inventory.StackReference;
 import net.minecraft.item.*;
+import net.minecraft.screen.slot.Slot;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
-import net.minecraft.util.TypedActionResult;
-import net.minecraft.util.UseAction;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -58,7 +57,18 @@ public class AlcoholItem extends BlockItem {
     public SoundEvent getEatSound() {
         return SoundEvents.ENTITY_GENERIC_DRINK;
     }
-
+    @Override
+    public boolean onClicked(ItemStack stack, ItemStack otherStack, Slot slot, ClickType clickType, PlayerEntity player, StackReference cursorStackReference) {
+        if (clickType != ClickType.RIGHT) {
+            return false;
+        }
+        if (stack.getItem() == ModItems.BEER && otherStack.getItem() == ModBlocks.BEER_GLASS_BLOCK.asItem() && otherStack.getCount() == 1) {
+            cursorStackReference.set(ModItems.FULL_BEER_GLASS.getDefaultStack());
+            slot.setStack(GLASS_BOTTLE.getDefaultStack());
+            return true;
+        }
+        return true;
+    }
 
     @Override
     public ActionResult useOnBlock(ItemUsageContext context) {

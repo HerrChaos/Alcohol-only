@@ -1,12 +1,12 @@
 {
-  "parent": "minecraft:recipes/root",
+  "parent": "minecraft:husbandry/balanced_diet",
   "display": {
     "icon": {
       "item": "shield:jaegermeister_item"
     },
     "title": "JÄGERMEISTER!",
     "description": "https://www.youtube.com/watch?v=jnhTxejPYFQ",
-    "frame": "challenge",
+    "frame": "task",
     "show_toast": true,
     "announce_to_chat": true
   },

@@ -1,12 +1,12 @@
 {
-  "parent": "minecraft:recipes/root",
+  "parent": "minecraft:husbandry/balanced_diet",
   "display": {
     "icon": {
       "item": "shield:beer_item"
     },
     "title": "Du bist jetzt offiziell Deutsch!",
     "description": "Sprich Deutsch du Hurensohn!",
-    "frame": "challenge",
+    "frame": "task",
     "show_toast": true,
     "announce_to_chat": true
   },
