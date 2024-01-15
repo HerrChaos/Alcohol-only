@@ -15,9 +15,6 @@
 	"icon": "assets/shield/icon.png",
 	"environment": "*",
 	"entrypoints": {
-		"fabric-datagen": [
-			"charten.shield.MainDataGenerator"
-		],
 		"main": [
           "charten.shield.Main"
 		],

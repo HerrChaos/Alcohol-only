@@ -47,6 +47,6 @@ public class ModEntities {
                     .trackRangeBlocks(4).trackedUpdateRate(10)
                     .build());
     public static void registerEntities() {
-        System.out.println("Registering Entities for " + Main.MOD_ID);
+        Main.LOGGER.info("Registering Entities for " + Main.MOD_ID);
     }
 }

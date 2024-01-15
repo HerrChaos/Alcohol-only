@@ -27,7 +27,7 @@ public class Main implements ModInitializer {
 		ModEntities.registerEntities();
 		ModStatusEffects.registerStatusEffect(MOD_ID);
 		ModVillagers.registerVillagers();
-		ModCustomTrades.registerCustomTrades();
+		ModVillagers.registerTrades();
 
 		LOGGER.info("Hello Fabric world!");
 	}

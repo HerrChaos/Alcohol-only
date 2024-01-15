@@ -10,6 +10,7 @@ import net.minecraft.village.TradeOffer;
 
 public class ModCustomTrades {
     public static void registerCustomTrades() {
+        /*
         TradeOfferHelper.registerVillagerOffers(ModVillagers.THE_DRUNK_GUY, 1,
                factories -> {
                     factories.add((entity, random) -> new TradeOffer(
@@ -90,5 +91,6 @@ public class ModCustomTrades {
                             new ItemStack(ModItems.BROKEN_BOTTLE, 3),
                             3, 30, 0.05f));
                 });
+         */
     }
 }
