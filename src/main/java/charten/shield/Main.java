@@ -6,7 +6,6 @@ import charten.shield.block.ModBlocks;
 import charten.shield.block.custom.blockentity.ModBlockEntityTypes;
 import charten.shield.entity.ModEntities;
 import charten.shield.statuseffect.ModStatusEffects;
-import charten.shield.util.ModCustomTrades;
 import charten.shield.villager.ModVillagers;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
