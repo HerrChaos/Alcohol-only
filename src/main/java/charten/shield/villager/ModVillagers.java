@@ -27,7 +27,7 @@ public class ModVillagers {
     public static VillagerProfession registerProfession(String name, RegistryKey<PointOfInterestType> type) {
         return Registry.register(Registries.VILLAGER_PROFESSION, new Identifier(Main.MOD_ID, name),
                 VillagerProfessionBuilder.create().id(new Identifier(Main.MOD_ID, name)).workstation(type)
-                        .workSound(SoundEvents.ENTITY_VILLAGER_WORK_ARMORER).build());
+                        .workSound(SoundEvents.ITEM_BOTTLE_EMPTY).build());
     }
 
     public static PointOfInterestType registerPOI(String name, Block block) {
@@ -65,7 +65,7 @@ public class ModVillagers {
 
                     factories.add((entity, random) -> new TradeOffer(
                             new ItemStack(ModItems.FULL_BEER_GLASS, 1),
-                            new ItemStack(Items.EMERALD, 2),
+                            new ItemStack(Items.EMERALD, 3),
                             8, 3, 0.05f));
                 });
 
