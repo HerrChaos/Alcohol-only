@@ -112,12 +112,12 @@ public class ModVillagers {
                 factories -> {
                     factories.add((entity, random) -> new TradeOffer(
                             new ItemStack(Items.EMERALD, 10),
-                            new ItemStack(ModItems.MOLOTOV, 3),
+                            new ItemStack(ModItems.MOLOTOV, 1),
                             3, 30, 0.05f));
 
                     factories.add((entity, random) -> new TradeOffer(
                             new ItemStack(Items.EMERALD, 10),
-                            new ItemStack(ModItems.BROKEN_BOTTLE, 3),
+                            new ItemStack(ModItems.BROKEN_BOTTLE, 1),
                             3, 30, 0.05f));
                 });
     }

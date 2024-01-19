@@ -11,6 +11,8 @@ import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Vector;
+
 public class Main implements ModInitializer {
 
 	public static final String MOD_ID = "shield";
