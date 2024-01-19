@@ -16,5 +16,7 @@
 
   "effect.shield.drunkinnis": "Drunkinnis",
 
-  "entity.minecraft.villager.the_drunk_guy": "The drunk guy"
+  "entity.minecraft.villager.the_drunk_guy": "The drunk guy",
+
+  "itemgroup.all_the_alcohol": "All the alcohol"
 }
