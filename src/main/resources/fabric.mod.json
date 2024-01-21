@@ -11,7 +11,7 @@
 		"youtube": "www.youtube.com/@HerrChaotic",
 		"github": "https://github.com/HerrChaos"
 	},
-	"license": "MIT",
+	"license": "CC0",
 	"icon": "assets/shield/icon.png",
 	"environment": "*",
 	"entrypoints": {
