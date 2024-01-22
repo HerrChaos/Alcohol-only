@@ -73,7 +73,7 @@ public class AlcoholItem extends BlockItem {
         if (Objects.requireNonNull(context.getPlayer()).getStackInHand(Hand.OFF_HAND).getItem() != null) {
             if (items.contains(context.getPlayer().getStackInHand(Hand.OFF_HAND).getItem())) {
                 use(context.getWorld(), context.getPlayer(), context.getHand());
-                return ActionResult.FAIL;
+                return ActionResult.PASS;
             }
         }
         this.place(new ItemPlacementContext(context));
@@ -93,9 +93,7 @@ public class AlcoholItem extends BlockItem {
         items.add(ModItems.BEER);
         if (hand == Hand.OFF_HAND) {
             if (items.contains(user.getStackInHand(hand).getItem())) {
-
                 world.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5F, 1F); // plays a globalSoundEvent
-
                 if (!world.isClient) {
                     ThrownItemEntity entity = null;
                     if (items.contains(ModItems.VODKA)) {
