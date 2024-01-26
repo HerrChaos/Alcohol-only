@@ -59,11 +59,6 @@ public class ModVillagers {
                             10, 1, 0.05f));
 
                     factories.add((entity, random) -> new TradeOffer(
-                            new ItemStack(Items.POTION, 1),
-                            new ItemStack(Items.EMERALD, 1),
-                            10, 1, 0.05f));
-
-                    factories.add((entity, random) -> new TradeOffer(
                             new ItemStack(ModItems.FULL_BEER_GLASS, 1),
                             new ItemStack(Items.EMERALD, 3),
                             8, 3, 0.05f));
@@ -111,12 +106,12 @@ public class ModVillagers {
         TradeOfferHelper.registerVillagerOffers(ModVillagers.THE_DRUNK_GUY, 5,
                 factories -> {
                     factories.add((entity, random) -> new TradeOffer(
-                            new ItemStack(Items.EMERALD, 10),
+                            new ItemStack(Items.EMERALD, 6),
                             new ItemStack(ModItems.MOLOTOV, 1),
                             3, 30, 0.05f));
 
                     factories.add((entity, random) -> new TradeOffer(
-                            new ItemStack(Items.EMERALD, 10),
+                            new ItemStack(Items.EMERALD, 6),
                             new ItemStack(ModItems.BROKEN_BOTTLE, 1),
                             3, 30, 0.05f));
                 });
