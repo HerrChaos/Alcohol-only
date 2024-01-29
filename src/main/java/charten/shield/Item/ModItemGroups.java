@@ -11,7 +11,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
 public class ModItemGroups {
-    public static final ItemGroup VANILLAY_END_STUFF = Registry.register(Registries.ITEM_GROUP,
+    public static final ItemGroup ALL_THE_ALCOHOL = Registry.register(Registries.ITEM_GROUP,
             new Identifier(Main.MOD_ID, "all_the_alcohol"),
             FabricItemGroup.builder().displayName(Text.translatable("itemgroup.all_the_alcohol"))
                     .icon(() -> new ItemStack(ModItems.BEER)).entries((displayContext, entries) -> {
