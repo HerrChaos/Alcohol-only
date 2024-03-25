@@ -15,25 +15,5 @@ public class ModEntityRenderer<B extends ThrownItemEntity> {
         EntityRendererRegistry.register(ModEntities.JAEGERMEISTER_BOTTLE_PROJECTILE, FlyingItemEntityRenderer::new);
         EntityRendererRegistry.register(ModEntities.VODKA_BOTTLE_PROJECTILE, FlyingItemEntityRenderer::new);
         EntityRendererRegistry.register(ModEntities.MOLOTOV_BOTTLE_ENTITY, FlyingItemEntityRenderer::new);
-
-
-
-/*
-        EntityRendererRegistry.register(ModEntities.MOLOTOV_BOTTLE_ENTITY, FlyingItemEntityRenderer::new);
-
-        net.fabricmc.fabric.api.client.rendereregistry.v1.EntityRendererRegistry.INSTANCE.register(ModEntities.VODKA_BOTTLE_PROJECTILE, BottleEntityRenderer::new);
-        EntityRendererRegistry.register(ModEntities.VODKA_BOTTLE_PROJECTILE, BottleEntityRenderer::new);
-
-        EntityRendererRegistry.register(ModEntities.BEER_BOTTLE_PROJECTILE, BottleEntityRenderer::new);
-        EntityRendererRegistry.register(ModEntities.JAEGERMEISTER_BOTTLE_PROJECTILE, BottleEntityRenderer::new);
-        EntityRendererRegistry.register(ModEntities.WINE_BOTTLE_PROJECTILE, BottleEntityRenderer::new);
-
-
-        EntityModelLayerRegistry.registerModelLayer(MODEL_CUBE_LAYER, Bottle::getTexturedModelData);
-
- */
-
-
-
     }
 }

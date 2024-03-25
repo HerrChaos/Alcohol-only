@@ -8,6 +8,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Hand;
@@ -26,22 +27,18 @@ public class Alcohol_Barrel_blockentity extends BlockEntity {
     public Alcohol_Barrel_blockentity(BlockPos pos, BlockState state) {
         super(ModBlockEntityTypes.ALCOHOL_BARREL_ENTITY, pos, state);
     }
-    /*
     @Override
     public void readNbt(NbtCompound nbt) {
-        Fluid = nbt.getString("fluid");
-        FillLevel = nbt.getInt("fill level");
+        this.Fluid = nbt.getString("fluid");
+        this.FillLevel = nbt.getInt("fill level");
         super.readNbt(nbt);
     }
-     */
-    /*
     @Override
     protected void writeNbt(NbtCompound nbt) {
-        nbt.putInt("fill level", FillLevel);
-        if (this.Fluid != "none") nbt.putString("fluid", Fluid);
+        nbt.putInt("fill level", this.FillLevel);
+        if (this.Fluid != "none") nbt.putString("fluid", this.Fluid);
         super.writeNbt(nbt);
     }
-     */
     public static void tick(World world, BlockPos pos, BlockState state, Alcohol_Barrel_blockentity de) {
         if (de.FillLevel > 8) de.FillLevel = 8;
         if (de.FillLevel == 0) de.Fluid = "none";

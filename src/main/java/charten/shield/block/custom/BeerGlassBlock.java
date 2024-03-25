@@ -5,6 +5,8 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
@@ -26,6 +28,7 @@ public class BeerGlassBlock extends Block{
         if(player.getAbilities().allowModifyWorld && player.getStackInHand(hand).getItem() == ModItems.BEER) {
             if (!player.getAbilities().creativeMode){
                 player.getStackInHand(hand).decrement(1);
+                player.giveItemStack(Items.GLASS_BOTTLE.getDefaultStack());
             }
             world.setBlockState(pos, FULL_BEER_GLASS_BLOCK.getDefaultState());
             return ActionResult.success(world.isClient);
