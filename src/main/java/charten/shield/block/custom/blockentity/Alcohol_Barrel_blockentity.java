@@ -45,22 +45,27 @@ public class Alcohol_Barrel_blockentity extends BlockEntity {
     }
 
     public static void OnUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        if ((Alcohol_Barrel_blockentity) world.getBlockEntity(pos) != null) {
+        if (world.getBlockEntity(pos) != null) {
             Alcohol_Barrel_blockentity blockEntity = (Alcohol_Barrel_blockentity) world.getBlockEntity(pos);
             if (blockEntity.FillLevel < 8) {
                 if (hasItemInHand(player, ModItems.BEER)) {
+                    player.giveItemStack(new ItemStack(Items.GLASS_BOTTLE, 1));
                     MakeFluidCheck("beer", player, blockEntity);
                 }
                 if (hasItemInHand(player, ModItems.WINE)) {
+                    player.giveItemStack(new ItemStack(Items.GLASS_BOTTLE, 1));
                     MakeFluidCheck("wine", player, blockEntity);
                 }
                 if (hasItemInHand(player, ModItems.VODKA)) {
+                    player.giveItemStack(new ItemStack(Items.GLASS_BOTTLE, 1));
                     MakeFluidCheck("vodka", player, blockEntity);
                 }
                 if (hasItemInHand(player, ModItems.JAEGERMEISTER)) {
+                    player.giveItemStack(new ItemStack(Items.GLASS_BOTTLE, 1));
                     MakeFluidCheck("jaegermeister", player, blockEntity);
                 }
                 if (hasItemInHand(player, ModItems.FULL_BEER_GLASS)) {
+                    player.giveItemStack(new ItemStack(Items.GLASS_BOTTLE, 1));
                     MakeFluidCheck("beer", player, blockEntity);
                 }
             }
